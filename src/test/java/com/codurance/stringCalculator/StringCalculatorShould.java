@@ -59,10 +59,26 @@ public class StringCalculatorShould {
     @CsvSource(value = {
         "1,2:3",
         "2,3:5",
-        "5,6:11"
+        "5,6:11",
+        "1,2,3,4,5,6,7,8,9:45",
     }, delimiter = ':')
     public void double_digit_string_returns_sum_as_integer(String stringNumber, int number) {
         assertEquals(number, stringCalculator.add(stringNumber));
+    }
+
+    @Test
+    public void adds_strings_1_2_3_with_different_seperators() {
+        assertEquals(6, stringCalculator.add("1\n2,3"));
+    }
+
+    @Test
+    public void adds_strings_1_2_3_5_6_7_8_9_with_different_seperators() {
+        assertEquals(45, stringCalculator.add("1\n2,3\n4,5\n6,7\n8,9"));
+    }
+
+    @Test
+    public void adds_strings_1_2_with_custom_separator() {
+        assertEquals(3, stringCalculator.add("//;\n1;2"));
     }
 
 }
