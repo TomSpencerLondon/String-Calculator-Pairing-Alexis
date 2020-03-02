@@ -9,7 +9,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.runner.RunWith;
 
-@RunWith(JUnitParamsRunner.class)
 public class StringCalculatorShould {
 
     private StringCalculator stringCalculator;
