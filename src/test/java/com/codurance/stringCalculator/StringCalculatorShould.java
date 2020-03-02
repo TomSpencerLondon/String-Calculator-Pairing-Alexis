@@ -1,10 +1,13 @@
 package com.codurance.stringCalculator;
 
+import junitparams.JUnitParamsRunner;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(JUnitParamsRunner.class)
 public class StringCalculatorShould {
   StringCalculator stringCalculator;
 
@@ -29,5 +32,11 @@ public class StringCalculatorShould {
   public void string_5_returns_5() {
     String number = "5";
     assertEquals(5, stringCalculator.add(number));
+  }
+
+  @Test
+  public void string_6_returns_6() {
+    String number = "6";
+    assertEquals(6, stringCalculator.add(number));
   }
 }
