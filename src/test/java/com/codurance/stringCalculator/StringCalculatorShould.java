@@ -1,19 +1,20 @@
 package com.codurance.stringCalculator;
 
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import static org.junit.Assert.assertEquals;
+
+import junitparams.JUnitParamsRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.runner.RunWith;
 
 @RunWith(JUnitParamsRunner.class)
 public class StringCalculatorShould {
 
     private StringCalculator stringCalculator;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         stringCalculator = new StringCalculator();
     }
@@ -24,8 +25,8 @@ public class StringCalculatorShould {
         assertEquals(0, stringCalculator.add(number));
     }
 
-    @Test
-    @Parameters({
+    @ParameterizedTest
+    @CsvSource({
         "4,4",
         "5,5",
         "6,6"
@@ -33,6 +34,7 @@ public class StringCalculatorShould {
     public void single_digit_string_returns_integer(int number, String stringNumber) {
         assertEquals(number, stringCalculator.add(stringNumber));
     }
+
 
     @Test
     public void adds_strings_1_2_to_return_3() {
@@ -52,5 +54,15 @@ public class StringCalculatorShould {
         assertEquals(11, stringCalculator.add(stringNumbers));
     }
 
+
+    @ParameterizedTest
+    @CsvSource(value = {
+        "1,2:3",
+        "2,3:5",
+        "5,6:11"
+    }, delimiter = ':')
+    public void double_digit_string_returns_sum_as_integer(String stringNumber, int number) {
+        assertEquals(number, stringCalculator.add(stringNumber));
+    }
 
 }
