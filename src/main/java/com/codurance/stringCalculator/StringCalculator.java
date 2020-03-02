@@ -2,11 +2,17 @@ package com.codurance.stringCalculator;
 
 public class StringCalculator {
 
-  public int add(String number) {
-    if (number.equals("")) return 0;
-    if (number.equals("1,2")) return 3;
-    if (number.equals("2,3")) return 5;
-    if (number.equals("5,6")) return 11;
-    return Integer.parseInt(number);
-  }
+    public static final String DELIMITER = ",";
+
+    public int add(String numbers) {
+        if (numbers.equals("")) {
+            return 0;
+        }
+
+        int sum = 0;
+        for (String number : numbers.split(DELIMITER)) {
+            sum += Integer.parseInt(number);
+        }
+        return sum;
+    }
 }
