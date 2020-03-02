@@ -2,12 +2,10 @@ package com.codurance.stringCalculator;
 
 import static org.junit.Assert.assertEquals;
 
-import junitparams.JUnitParamsRunner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.runner.RunWith;
 
 public class StringCalculatorShould {
 
@@ -67,7 +65,9 @@ public class StringCalculatorShould {
 
     @Test
     public void adds_strings_1_2_3_with_different_seperators() {
-        assertEquals(6, stringCalculator.add("1\n2,3"));
+        assertEquals(6, stringCalculator.add(
+            "1\n" +
+            "2,3"));
     }
 
     @Test
