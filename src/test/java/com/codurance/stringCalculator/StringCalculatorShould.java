@@ -1,6 +1,7 @@
 package com.codurance.stringCalculator;
 
 import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,10 +10,10 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
 public class StringCalculatorShould {
-  StringCalculator stringCalculator;
+  private StringCalculator stringCalculator;
 
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     stringCalculator = new StringCalculator();
   }
 
@@ -23,20 +24,26 @@ public class StringCalculatorShould {
   }
 
   @Test
-  public void string_4_returns_4() {
-    String number = "4";
-    assertEquals(4, stringCalculator.add(number));
+  @Parameters({
+          "4,4",
+          "5,5",
+          "6,6"
+  })
+  public void single_digit_string_returns_integer(int number, String stringNumber) {
+    assertEquals(number, stringCalculator.add(stringNumber));
   }
 
   @Test
-  public void string_5_returns_5() {
-    String number = "5";
-    assertEquals(5, stringCalculator.add(number));
+  public void adds_strings_1_2_to_return_3() {
+    String stringNumbers = "1,2";
+    assertEquals(3, stringCalculator.add(stringNumbers));
   }
 
   @Test
-  public void string_6_returns_6() {
-    String number = "6";
-    assertEquals(6, stringCalculator.add(number));
+  public void adds_strings_2_3_to_return_5() {
+    String stringNumbers = "2,3";
+    assertEquals(5, stringCalculator.add(stringNumbers));
   }
+
+
 }
